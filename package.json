@@ -1,0 +1,70 @@
+{
+  "name": "job-order-files",
+  "version": "1.0.0",
+  "description": "Municipality Job Order Files Management System",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "author": "Your Name",
+  "build": {
+    "appId": "com.municipality.joborder",
+    "productName": "201 Job Order Files",
+    "files": [
+      "build/**/*",
+      "public/electron.js",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "certificateFile": null,
+      "certificatePassword": null,
+      "signingHashAlgorithms": ["sha256"],
+      "sign": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "201 Job Order Files"
+    }
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "electron-is-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "react-scripts": "5.0.1",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "@craco/craco": "^7.1.0"
+  },
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "electron-start": "wait-on http://localhost:3000 && electron .",
+    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && sleep 5 && electron .\"",
+    "build": "npm run react-build && electron-builder",
+    "build-win": "npm run react-build && electron-builder --win"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
